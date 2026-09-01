@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0878e8">
 <title>Doraemon World 💙</title>
-
 <style>
+/* =========================================================
+   RESET
+========================================================= */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-
 html{
     scroll-behavior:smooth;
+    overflow-x:hidden;
 }
-
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#f4f9ff;
@@ -24,15 +25,20 @@ body{
     overflow-x:hidden;
     transition:.35s;
 }
-
-button,input{
+button,
+input{
     font-family:inherit;
 }
-
 button{
     cursor:pointer;
 }
-
+img,
+video{
+    max-width:100%;
+}
+/* =========================================================
+   NAVBAR
+========================================================= */
 nav{
     position:fixed;
     top:0;
@@ -43,12 +49,11 @@ nav{
     align-items:center;
     justify-content:space-between;
     padding:0 6%;
-    background:rgba(255,255,255,.88);
+    background:rgba(255,255,255,.90);
     backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(0,100,220,.12);
     z-index:1000;
 }
-
 .logo{
     display:flex;
     align-items:center;
@@ -56,8 +61,8 @@ nav{
     color:#0878e8;
     font-size:21px;
     font-weight:900;
+    white-space:nowrap;
 }
-
 .logo-circle{
     width:42px;
     height:42px;
@@ -67,12 +72,11 @@ nav{
     position:relative;
     cursor:pointer;
     transition:.2s;
+    flex-shrink:0;
 }
-
 .logo-circle:hover{
     transform:scale(1.08);
 }
-
 .logo-circle::after{
     content:"";
     position:absolute;
@@ -84,24 +88,21 @@ nav{
     bottom:4px;
     transform:translateX(-50%);
 }
-
 .nav-links{
     display:flex;
     align-items:center;
     gap:23px;
     list-style:none;
 }
-
 .nav-links a{
     color:#26364d;
+    text-decoration:none;
     font-weight:700;
     transition:.2s;
 }
-
 .nav-links a:hover{
     color:#0878e8;
 }
-
 .theme-btn{
     width:40px;
     height:40px;
@@ -110,10 +111,9 @@ nav{
     background:#eaf5ff;
     font-size:18px;
 }
-
-
-/* HERO */
-
+/* =========================================================
+   HERO
+========================================================= */
 .hero{
     min-height:100vh;
     padding:120px 7% 70px;
@@ -124,16 +124,22 @@ nav{
     position:relative;
     overflow:hidden;
     background:
-        radial-gradient(circle at 80% 20%,rgba(0,160,255,.2),transparent 35%),
-        linear-gradient(135deg,#eaf7ff,#ffffff);
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(0,160,255,.2),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #eaf7ff,
+            #ffffff
+        );
 }
-
 .hero-text{
     max-width:650px;
     position:relative;
     z-index:5;
 }
-
 .badge{
     display:inline-block;
     padding:8px 17px;
@@ -144,17 +150,14 @@ nav{
     font-weight:800;
     margin-bottom:20px;
 }
-
 .hero h1{
     font-size:clamp(45px,7vw,88px);
     line-height:.95;
     margin-bottom:25px;
 }
-
 .hero h1 span{
     color:#0878e8;
 }
-
 .hero p{
     color:#536274;
     font-size:19px;
@@ -162,13 +165,11 @@ nav{
     max-width:570px;
     margin-bottom:30px;
 }
-
 .hero-buttons{
     display:flex;
     gap:14px;
     flex-wrap:wrap;
 }
-
 .btn{
     border:none;
     padding:14px 23px;
@@ -177,32 +178,31 @@ nav{
     font-weight:800;
     transition:.25s;
 }
-
 .btn-primary{
     background:#0878e8;
     color:white;
-    box-shadow:0 10px 25px rgba(8,120,232,.25);
+    box-shadow:
+        0 10px 25px
+        rgba(8,120,232,.25);
 }
-
 .btn-primary:hover{
     transform:translateY(-3px);
-    box-shadow:0 15px 30px rgba(8,120,232,.35);
+    box-shadow:
+        0 15px 30px
+        rgba(8,120,232,.35);
 }
-
 .btn-secondary{
     background:white;
     color:#0878e8;
     border:2px solid #0878e8;
 }
-
 .btn-secondary:hover{
     background:#0878e8;
     color:white;
 }
-
-
-/* FLOATING DOTS */
-
+/* =========================================================
+   FLOATING DOTS
+========================================================= */
 .floating-dot{
     position:absolute;
     width:10px;
@@ -210,22 +210,43 @@ nav{
     background:#65c6ff;
     border-radius:50%;
     opacity:.5;
-    animation:floatDot 5s infinite ease-in-out;
+    animation:
+        floatDot
+        5s
+        infinite
+        ease-in-out;
 }
-
-.dot1{left:10%;top:20%;}
-.dot2{left:45%;top:15%;animation-delay:1s;}
-.dot3{left:75%;top:70%;animation-delay:2s;}
-.dot4{left:20%;bottom:15%;animation-delay:3s;}
-
+.dot1{
+    left:10%;
+    top:20%;
+}
+.dot2{
+    left:45%;
+    top:15%;
+    animation-delay:1s;
+}
+.dot3{
+    left:75%;
+    top:70%;
+    animation-delay:2s;
+}
+.dot4{
+    left:20%;
+    bottom:15%;
+    animation-delay:3s;
+}
 @keyframes floatDot{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-25px);}
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-25px);
+    }
 }
-
-
-/* DORAEMON VIDEO */
-
+/* =========================================================
+   DORAEMON VIDEO
+========================================================= */
 .hero-character{
     width:min(480px,90vw);
     height:500px;
@@ -233,8 +254,8 @@ nav{
     align-items:center;
     justify-content:center;
     position:relative;
+    flex-shrink:0;
 }
-
 .hero-character::before{
     content:"";
     position:absolute;
@@ -244,7 +265,6 @@ nav{
     border-radius:50%;
     opacity:.8;
 }
-
 .doraemon-video{
     width:390px;
     max-width:90vw;
@@ -252,48 +272,60 @@ nav{
     z-index:2;
     object-fit:contain;
     pointer-events:none;
-    filter:drop-shadow(0 25px 25px rgba(0,80,150,.2));
-    animation:doraemonFloat 4s ease-in-out infinite;
+    filter:
+        drop-shadow(
+            0 25px 25px
+            rgba(0,80,150,.2)
+        );
+    animation:
+        doraemonFloat
+        4s
+        ease-in-out
+        infinite;
 }
-
 @keyframes doraemonFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
 }
-
-
-/* SECTIONS */
-
+/* =========================================================
+   SECTIONS
+========================================================= */
 section{
     padding:100px 7%;
 }
-
 .section-heading{
     text-align:center;
     margin-bottom:50px;
 }
-
 .section-heading h2{
-    font-size:clamp(32px,5vw,52px);
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            52px
+        );
     margin-bottom:12px;
 }
-
 .section-heading p{
     color:#64748b;
 }
-
-
-/* POCKET */
-
+/* =========================================================
+   POCKET
+========================================================= */
 .pocket-section{
     background:#0878e8;
     color:white;
 }
-
-.pocket-section .section-heading p{
+.pocket-section
+.section-heading
+p{
     color:#dcefff;
 }
-
 .pocket-container{
     max-width:1100px;
     margin:auto;
@@ -303,7 +335,6 @@ section{
     gap:70px;
     flex-wrap:wrap;
 }
-
 .pocket-image-container{
     width:330px;
     height:300px;
@@ -315,26 +346,28 @@ section{
     user-select:none;
     position:relative;
 }
-
 .pocket-image-container:hover{
-    transform:scale(1.05) rotate(-2deg);
+    transform:
+        scale(1.05)
+        rotate(-2deg);
 }
-
 .pocket-image{
     width:300px;
     max-height:280px;
     object-fit:contain;
-    filter:drop-shadow(0 20px 20px rgba(0,0,0,.2));
+    filter:
+        drop-shadow(
+            0 20px 20px
+            rgba(0,0,0,.2)
+        );
 }
-
 .pocket-fallback{
     font-size:130px;
     display:none;
 }
-
-
-/* POCKET RESULT */
-
+/* =========================================================
+   POCKET RESULT
+========================================================= */
 .pocket-result{
     width:330px;
     min-height:360px;
@@ -344,13 +377,15 @@ section{
     justify-content:center;
     text-align:center;
     padding:25px;
-    background:rgba(255,255,255,.12);
-    border:2px solid rgba(255,255,255,.2);
+    background:
+        rgba(255,255,255,.12);
+    border:
+        2px solid
+        rgba(255,255,255,.2);
     border-radius:25px;
     backdrop-filter:blur(10px);
     transition:.3s;
 }
-
 .pocket-result-image{
     width:190px;
     height:170px;
@@ -359,83 +394,97 @@ section{
     justify-content:center;
     margin-bottom:15px;
 }
-
 .pocket-result-image img{
+    width:auto;
+    height:auto;
     max-width:180px;
     max-height:165px;
     object-fit:contain;
-    filter:drop-shadow(0 12px 15px rgba(0,0,0,.2));
+    filter:
+        drop-shadow(
+            0 12px 15px
+            rgba(0,0,0,.2)
+        );
     display:none;
 }
-
 .pocket-result-fallback{
     font-size:75px;
 }
-
 .pocket-result h3{
     font-size:27px;
     margin-bottom:10px;
 }
-
 .pocket-result p{
     color:#e4f4ff;
     line-height:1.6;
     margin-bottom:15px;
 }
-
 .pocket-hint{
     margin-top:15px;
     font-size:14px;
     color:#d8edff;
 }
-
-
-/* GADGET SEARCH */
-
+/* =========================================================
+   GADGET SEARCH
+========================================================= */
 .gadget-search{
     display:block;
     width:min(500px,90%);
-    margin:0 auto 35px;
-    padding:15px 20px;
+    margin:
+        0
+        auto
+        35px;
+    padding:
+        15px
+        20px;
     border-radius:14px;
-    border:2px solid #dce9f5;
+    border:
+        2px solid
+        #dce9f5;
     outline:none;
     font-size:16px;
     transition:.2s;
 }
-
 .gadget-search:focus{
     border-color:#0878e8;
-    box-shadow:0 0 0 4px rgba(8,120,232,.1);
+    box-shadow:
+        0 0 0 4px
+        rgba(8,120,232,.1);
 }
-
-
-/* GADGETS */
-
+/* =========================================================
+   GADGETS
+========================================================= */
 .gadgets{
     max-width:1200px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(210px,1fr)
+        );
     gap:22px;
 }
-
 .gadget-card{
     background:white;
     border-radius:20px;
     padding:25px;
-    border:1px solid #e3edf7;
-    box-shadow:0 10px 30px rgba(20,50,90,.06);
+    border:
+        1px solid
+        #e3edf7;
+    box-shadow:
+        0 10px 30px
+        rgba(20,50,90,.06);
     transition:.3s;
     cursor:pointer;
 }
-
 .gadget-card:hover{
     transform:translateY(-8px);
     border-color:#91d3ff;
-    box-shadow:0 20px 40px rgba(20,100,180,.13);
+    box-shadow:
+        0 20px 40px
+        rgba(20,100,180,.13);
 }
-
 .gadget-image{
     height:150px;
     display:flex;
@@ -445,7 +494,6 @@ section{
     overflow:hidden;
     position:relative;
 }
-
 .gadget-image img{
     max-width:150px;
     max-height:140px;
@@ -456,48 +504,61 @@ section{
     position:relative;
     z-index:2;
 }
-
 .gadget-placeholder{
     display:none;
     font-size:65px;
 }
-
-.gadget-image.image-missing .gadget-placeholder{
+.gadget-image.image-missing
+.gadget-placeholder{
     display:block;
 }
-
-
-/* SECRET GADGET */
-
+/* =========================================================
+   SECRET GADGET
+========================================================= */
 .secret-gadget{
     display:none;
-    border:2px solid #8b5cf6;
-    background:linear-gradient(135deg,#f4edff,#ffffff);
+    border:
+        2px solid
+        #8b5cf6;
+    background:
+        linear-gradient(
+            135deg,
+            #f4edff,
+            #ffffff
+        );
 }
-
 .secret-gadget.unlocked{
     display:block;
-    animation:secretAppear .7s ease;
+    animation:
+        secretAppear
+        .7s
+        ease;
 }
-
 @keyframes secretAppear{
     from{
         opacity:0;
-        transform:scale(.8) rotate(-3deg);
+        transform:
+            scale(.8)
+            rotate(-3deg);
     }
     to{
         opacity:1;
-        transform:scale(1) rotate(0);
+        transform:
+            scale(1)
+            rotate(0);
     }
 }
-
-
-/* ANYWHERE DOOR */
-
+/* =========================================================
+   ANYWHERE DOOR
+========================================================= */
 .door-section{
-    background:linear-gradient(135deg,#eff9ff,#d9f1ff);
+    background:
+        linear-gradient(
+            135deg,
+            #eff9ff,
+            #d9f1ff
+        );
 }
-
 .door-area{
     max-width:1000px;
     margin:auto;
@@ -507,7 +568,6 @@ section{
     gap:60px;
     flex-wrap:wrap;
 }
-
 .destination-scene{
     width:420px;
     height:300px;
@@ -515,77 +575,88 @@ section{
     overflow:hidden;
     position:relative;
     background:#bfe9ff;
-    box-shadow:0 20px 45px rgba(0,70,130,.15);
+    box-shadow:
+        0 20px 45px
+        rgba(0,70,130,.15);
     order:2;
     display:none;
 }
-
 .destination-scene.show{
     display:block;
-    animation:sceneAppear .7s ease;
+    animation:
+        sceneAppear
+        .7s
+        ease;
 }
-
 @keyframes sceneAppear{
     from{
         opacity:0;
-        transform:scale(.94);
+        transform:
+            scale(.94);
     }
     to{
         opacity:1;
-        transform:scale(1);
+        transform:
+            scale(1);
     }
 }
-
 .destination-scene img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
 }
-
 .door-wrapper{
     display:flex;
     flex-direction:column;
     align-items:center;
     order:1;
 }
-
 .door{
     width:210px;
     height:330px;
     background:#e74b42;
-    border:10px solid #8e2825;
+    border:
+        10px solid
+        #8e2825;
     border-radius:8px;
     position:relative;
     cursor:pointer;
-    box-shadow:0 20px 45px rgba(100,30,20,.25);
+    box-shadow:
+        0 20px 45px
+        rgba(100,30,20,.25);
     transform-style:preserve-3d;
-    transition:transform .8s ease;
+    transition:
+        transform
+        .8s
+        ease;
 }
-
 .door::before{
     content:"";
     position:absolute;
     inset:15px;
-    border:3px solid rgba(255,255,255,.35);
+    border:
+        3px solid
+        rgba(255,255,255,.35);
 }
-
 .door-knob{
     position:absolute;
     width:18px;
     height:18px;
     border-radius:50%;
     background:#ffd45a;
-    border:2px solid #99700d;
+    border:
+        2px solid
+        #99700d;
     right:25px;
     top:50%;
 }
-
 .door.open{
-    transform:perspective(700px) rotateY(-65deg);
+    transform:
+        perspective(700px)
+        rotateY(-65deg);
     transform-origin:left;
 }
-
 .door-message{
     margin-top:25px;
     text-align:center;
@@ -595,7 +666,6 @@ section{
     min-height:25px;
     max-width:360px;
 }
-
 .destination-buttons{
     display:flex;
     flex-wrap:wrap;
@@ -603,52 +673,52 @@ section{
     gap:10px;
     margin-top:18px;
 }
-
 .destination-buttons button{
-    border:2px solid #0878e8;
+    border:
+        2px solid
+        #0878e8;
     background:white;
     color:#0878e8;
-    padding:10px 15px;
+    padding:
+        10px
+        15px;
     border-radius:10px;
     font-weight:700;
     transition:.2s;
 }
-
 .destination-buttons button:hover{
     background:#0878e8;
     color:white;
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 }
-
 .destination-buttons button.selected{
     background:#0878e8;
     color:white;
 }
-
-
-/* QUIZ */
-
+/* =========================================================
+   QUIZ
+========================================================= */
 .quiz-box{
     max-width:700px;
     margin:auto;
     background:white;
     border-radius:25px;
     padding:35px;
-    box-shadow:0 15px 40px rgba(20,50,90,.08);
+    box-shadow:
+        0 15px 40px
+        rgba(20,50,90,.08);
     text-align:center;
 }
-
 .quiz-question{
     font-size:24px;
     font-weight:800;
     margin-bottom:25px;
 }
-
 .quiz-options{
     display:grid;
     gap:12px;
 }
-
 .quiz-option{
     border:none;
     padding:14px;
@@ -657,96 +727,103 @@ section{
     font-weight:700;
     transition:.2s;
 }
-
 .quiz-option:hover{
     background:#dff1ff;
-    transform:translateX(4px);
+    transform:
+        translateX(4px);
 }
-
 .quiz-result{
     margin-top:20px;
     min-height:25px;
     font-weight:700;
 }
-
 .score{
     margin-top:18px;
     color:#0878e8;
     font-weight:900;
 }
-
-
-/* SECRET SECTION */
-
+/* =========================================================
+   SECRET SECTION
+========================================================= */
 .secret{
     text-align:center;
     padding:70px 20px;
     background:#071a2f;
     color:white;
 }
-
 .secret h2{
     font-size:35px;
     margin-bottom:12px;
 }
-
 .secret p{
     color:#b9cadb;
     margin-bottom:20px;
 }
-
 .secret button{
     border:none;
     background:#0878e8;
     color:white;
-    padding:14px 25px;
+    padding:
+        14px
+        25px;
     border-radius:12px;
     font-weight:800;
 }
-
-
-/* SECRET NOTIFICATION */
-
+/* =========================================================
+   UNLOCK MESSAGE
+========================================================= */
 .unlock-message{
     position:fixed;
     top:90px;
     left:50%;
-    transform:translateX(-50%) translateY(-30px);
-    background:linear-gradient(135deg,#7c3aed,#0878e8);
+    transform:
+        translateX(-50%)
+        translateY(-30px);
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #0878e8
+        );
     color:white;
-    padding:15px 25px;
+    padding:
+        15px
+        25px;
     border-radius:15px;
     font-weight:900;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.25);
     opacity:0;
     pointer-events:none;
     z-index:3000;
     transition:.4s;
+    width:max-content;
+    max-width:90%;
 }
-
 .unlock-message.show{
     opacity:1;
-    transform:translateX(-50%) translateY(0);
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
-
-
-/* MODAL */
-
+/* =========================================================
+   MODAL
+========================================================= */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,20,40,.7);
+    background:
+        rgba(0,20,40,.7);
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
     z-index:2000;
 }
-
 .modal.active{
     display:flex;
 }
-
 .modal-box{
     width:min(500px,100%);
     background:white;
@@ -754,31 +831,32 @@ section{
     padding:35px;
     text-align:center;
     position:relative;
-    animation:modalIn .25s ease;
+    animation:
+        modalIn
+        .25s
+        ease;
 }
-
 @keyframes modalIn{
     from{
         opacity:0;
-        transform:scale(.9);
+        transform:
+            scale(.9);
     }
     to{
         opacity:1;
-        transform:scale(1);
+        transform:
+            scale(1);
     }
 }
-
 .modal-box h3{
     font-size:30px;
     color:#0878e8;
     margin-bottom:15px;
 }
-
 .modal-box p{
     color:#5e6d80;
     line-height:1.7;
 }
-
 .close-modal{
     position:absolute;
     top:12px;
@@ -787,242 +865,515 @@ section{
     background:none;
     font-size:28px;
 }
-
-
-/* FOOTER */
-
+/* =========================================================
+   FOOTER
+========================================================= */
 footer{
     background:#071a2f;
     color:#c8d7e7;
     text-align:center;
     padding:35px 20px;
 }
-
 footer strong{
     color:#55b7ff;
 }
-
-
-/* DARK MODE */
-
+/* =========================================================
+   DARK MODE
+========================================================= */
 body.dark{
     background:#081522;
     color:#edf7ff;
 }
-
 body.dark nav{
-    background:rgba(8,21,34,.9);
+    background:
+        rgba(8,21,34,.92);
 }
-
 body.dark .nav-links a{
     color:#d9eaff;
 }
-
 body.dark .hero{
     background:
-        radial-gradient(circle at 80% 20%,rgba(0,140,255,.2),transparent 35%),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(0,140,255,.2),
+            transparent 35%
+        ),
         #081522;
 }
-
 body.dark .hero p{
     color:#aabbd0;
 }
-
 body.dark .btn-secondary{
     background:#081522;
 }
-
 body.dark .gadget-card,
 body.dark .quiz-box,
 body.dark .modal-box{
     background:#102337;
 }
-
 body.dark .gadget-card{
     border-color:#203b55;
 }
-
 body.dark .modal-box p{
     color:#a9bbcf;
 }
-
 body.dark .gadget-search{
     background:#102337;
     color:white;
     border-color:#29445d;
 }
-
 body.dark .door-section{
     background:#10283d;
 }
-
 body.dark .destination-scene{
     background:#18334d;
 }
-
 body.dark .quiz-option{
     background:#18334d;
     color:white;
 }
-
 body.dark .quiz-option:hover{
     background:#214765;
 }
-
 body.dark .secret-gadget{
-    background:linear-gradient(135deg,#21143b,#102337);
+    background:
+        linear-gradient(
+            135deg,
+            #21143b,
+            #102337
+        );
     border-color:#8b5cf6;
 }
-
-
-/* MOBILE */
-
-@media(max-width:850px){
-
+/* =========================================================
+   TABLET
+========================================================= */
+@media(max-width:900px){
     nav{
         padding:0 4%;
     }
-
     .nav-links{
-        gap:10px;
+        gap:12px;
     }
-
     .nav-links a{
         font-size:13px;
     }
-
     .hero{
         flex-direction:column;
         text-align:center;
         padding-top:120px;
     }
-
+    .hero-text{
+        max-width:700px;
+    }
     .hero p{
         margin-left:auto;
         margin-right:auto;
     }
-
     .hero-buttons{
         justify-content:center;
     }
-
     .hero-character{
-        height:400px;
+        width:100%;
+        height:420px;
     }
-
     .doraemon-video{
-        width:330px;
+        width:340px;
     }
-
     .door-area{
-        flex-direction:column;
-    }
-
-    .destination-scene{
-        order:1;
-        width:min(420px,90vw);
-    }
-
-    .door-wrapper{
-        order:2;
+        gap:40px;
     }
 }
-
-@media(max-width:550px){
-
+/* =========================================================
+   MOBILE
+========================================================= */
+@media(max-width:600px){
+    body{
+        width:100%;
+        overflow-x:hidden;
+    }
+    /* NAVBAR */
+    nav{
+        height:64px;
+        padding:
+            0
+            14px;
+        gap:8px;
+    }
     .logo{
-        font-size:17px;
-    }
-
-    .logo-circle{
-        width:35px;
-        height:35px;
-    }
-
-    .nav-links{
+        font-size:16px;
         gap:7px;
     }
-
+    .logo-circle{
+        width:34px;
+        height:34px;
+        border-width:2px;
+    }
+    .logo-circle::after{
+        width:6px;
+        height:6px;
+        bottom:3px;
+    }
+    .nav-links{
+        gap:5px;
+    }
+    .nav-links li:nth-child(1),
+    .nav-links li:nth-child(2),
     .nav-links li:nth-child(3),
-    .nav-links li:nth-child(4){
+    .nav-links li:nth-child(4),
+    .nav-links li:nth-child(5){
         display:none;
     }
-
+    .theme-btn{
+        width:38px;
+        height:38px;
+        font-size:17px;
+    }
+    /* SECTIONS */
     section{
-        padding:75px 5%;
+        padding:
+            75px
+            16px;
     }
-
+    .section-heading{
+        margin-bottom:35px;
+    }
+    .section-heading h2{
+        font-size:34px;
+        line-height:1.1;
+    }
+    .section-heading p{
+        font-size:15px;
+        line-height:1.5;
+    }
+    /* HERO */
+    .hero{
+        min-height:auto;
+        padding:
+            105px
+            18px
+            60px;
+        gap:25px;
+    }
+    .badge{
+        font-size:12px;
+        padding:
+            7px
+            13px;
+        margin-bottom:16px;
+    }
+    .hero h1{
+        font-size:
+            clamp(
+                43px,
+                13vw,
+                62px
+            );
+        line-height:.95;
+        margin-bottom:20px;
+    }
+    .hero p{
+        font-size:16px;
+        line-height:1.65;
+        margin-bottom:25px;
+    }
+    .hero-buttons{
+        width:100%;
+        flex-direction:column;
+        gap:10px;
+    }
+    .hero-buttons .btn{
+        width:100%;
+    }
+    .hero-character{
+        width:100%;
+        height:330px;
+        margin-top:5px;
+    }
     .hero-character::before{
-        width:280px;
-        height:280px;
-    }
-
-    .doraemon-video{
-        width:290px;
-    }
-
-    .pocket-image-container{
-        width:280px;
-    }
-
-    .pocket-image{
         width:250px;
+        height:250px;
     }
-
-    .pocket-result{
-        width:min(330px,90vw);
+    .doraemon-video{
+        width:280px;
+        max-width:85vw;
     }
-
-    .destination-scene{
+    /* POCKET */
+    .pocket-container{
+        width:100%;
+        flex-direction:column;
+        gap:20px;
+    }
+    .pocket-image-container{
+        width:100%;
         height:230px;
+    }
+    .pocket-image{
+        width:245px;
+        max-height:220px;
+    }
+    .pocket-result{
+        width:100%;
+        max-width:360px;
+        min-height:340px;
+        padding:22px;
+    }
+    .pocket-result-image{
+        width:170px;
+        height:145px;
+    }
+    .pocket-result-image img{
+        max-width:155px;
+        max-height:140px;
+    }
+    .pocket-result h3{
+        font-size:24px;
+    }
+    .pocket-result p{
+        font-size:14px;
+    }
+    .pocket-result .btn{
+        width:100%;
+    }
+    /* GADGET SEARCH */
+    .gadget-search{
+        width:100%;
+        margin-bottom:25px;
+        padding:
+            14px
+            16px;
+    }
+    /* GADGET GRID */
+    .gadgets{
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+        gap:12px;
+    }
+    .gadget-card{
+        padding:15px;
+        border-radius:17px;
+    }
+    .gadget-card:hover{
+        transform:none;
+    }
+    .gadget-image{
+        height:115px;
+        margin-bottom:10px;
+    }
+    .gadget-image img{
+        max-width:105px;
+        max-height:105px;
+    }
+    .gadget-placeholder{
+        font-size:48px;
+    }
+    .gadget-card h3{
+        font-size:16px;
+        line-height:1.25;
+        margin-bottom:7px;
+    }
+    .gadget-card p{
+        font-size:12px;
+        line-height:1.4;
+        color:#657386;
+    }
+    body.dark .gadget-card p{
+        color:#a9bbcf;
+    }
+    .secret-gadget{
+        grid-column:
+            1 / -1;
+    }
+    /* ANYWHERE DOOR */
+    .door-area{
+        width:100%;
+        flex-direction:column;
+        gap:25px;
+    }
+    .destination-scene{
+        order:1;
+        width:100%;
+        height:220px;
+        border-radius:18px;
+    }
+    .door-wrapper{
+        order:2;
+        width:100%;
+    }
+    .door{
+        width:175px;
+        height:275px;
+        border-width:8px;
+    }
+    .door::before{
+        inset:12px;
+    }
+    .door-knob{
+        width:16px;
+        height:16px;
+        right:19px;
+    }
+    .door-message{
+        font-size:15px;
+        line-height:1.5;
+        max-width:330px;
+        margin-top:18px;
+    }
+    .destination-buttons{
+        width:100%;
+        display:grid;
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+        gap:9px;
+    }
+    .destination-buttons button{
+        width:100%;
+        padding:
+            11px
+            7px;
+        font-size:13px;
+    }
+    /* QUIZ */
+    .quiz-box{
+        width:100%;
+        padding:22px 16px;
+        border-radius:20px;
+    }
+    .quiz-question{
+        font-size:20px;
+        line-height:1.4;
+        margin-bottom:20px;
+    }
+    .quiz-option{
+        padding:13px 10px;
+        font-size:14px;
+    }
+    .quiz-option:hover{
+        transform:none;
+    }
+    .quiz-result{
+        font-size:14px;
+    }
+    /* SECRET */
+    .secret{
+        padding:
+            60px
+            18px;
+    }
+    .secret h2{
+        font-size:28px;
+        line-height:1.2;
+    }
+    .secret p{
+        font-size:14px;
+        line-height:1.6;
+    }
+    .secret button{
+        width:100%;
+        max-width:300px;
+    }
+    /* MODAL */
+    .modal{
+        padding:16px;
+    }
+    .modal-box{
+        padding:
+            30px
+            20px
+            25px;
+        border-radius:20px;
+    }
+    .modal-box h3{
+        font-size:25px;
+    }
+    .modal-box p{
+        font-size:14px;
+    }
+    /* UNLOCK MESSAGE */
+    .unlock-message{
+        top:78px;
+        padding:
+            12px
+            16px;
+        font-size:13px;
+        text-align:center;
+        border-radius:12px;
+    }
+    /* FOOTER */
+    footer{
+        padding:
+            30px
+            15px;
+        font-size:13px;
+    }
+}
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+@media(max-width:380px){
+    .logo{
+        font-size:14px;
+    }
+    .gadgets{
+        gap:9px;
+    }
+    .gadget-card{
+        padding:12px;
+    }
+    .gadget-image{
+        height:100px;
+    }
+    .gadget-image img{
+        max-width:90px;
+        max-height:90px;
+    }
+    .gadget-card h3{
+        font-size:14px;
+    }
+    .gadget-card p{
+        font-size:11px;
+    }
+    .door{
+        width:160px;
+        height:255px;
     }
 }
 </style>
-
 </head>
-
 <body>
-
-<!-- NAVBAR -->
-
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
 <nav>
-
-```
 <div class="logo">
-
     <div
         class="logo-circle"
         id="secretBell"
         onclick="bellClick()">
     </div>
-
     Doraemon World
-
 </div>
-
-
 <ul class="nav-links">
-
     <li>
         <a href="#home">Home</a>
     </li>
-
     <li>
         <a href="#pocket">Pocket</a>
     </li>
-
     <li>
         <a href="#gadgets">Gadgets</a>
     </li>
-
     <li>
         <a href="#door">Door</a>
     </li>
-
     <li>
         <a href="#quiz">Quiz</a>
     </li>
-
     <li>
         <button
             class="theme-btn"
@@ -1031,86 +1382,57 @@ body.dark .secret-gadget{
             🌙
         </button>
     </li>
-
 </ul>
-```
-
 </nav>
-
-<!-- SECRET NOTIFICATION -->
-
+<!-- =======================================================
+     SECRET NOTIFICATION
+======================================================= -->
 <div
     class="unlock-message"
     id="unlockMessage">
-
-```
 🔓 SECRET GADGET UNLOCKED!
-```
-
 </div>
-
-<!-- HERO -->
-
+<!-- =======================================================
+     HERO
+======================================================= -->
 <section
     class="hero"
     id="home">
-
-```
 <div class="floating-dot dot1"></div>
 <div class="floating-dot dot2"></div>
 <div class="floating-dot dot3"></div>
 <div class="floating-dot dot4"></div>
-
-
 <div class="hero-text">
-
     <span class="badge">
         💙 Welcome to the future
     </span>
-
     <h1>
         Welcome to
         <span>Doraemon World</span>
     </h1>
-
     <p>
         Step into a world of futuristic gadgets,
         impossible adventures and unlimited imagination.
         Explore the 4D Pocket, travel through the
         Anywhere Door and test your Doraemon knowledge.
     </p>
-
-
     <div class="hero-buttons">
-
         <button
             class="btn btn-primary"
             onclick="scrollToSection('pocket')">
-
             🎒 Explore Pocket
-
         </button>
-
-
         <button
             class="btn btn-secondary"
             onclick="scrollToSection('gadgets')">
-
             ✨ Explore Gadgets
-
         </button>
-
     </div>
-
 </div>
-
-
 <!-- YOUR TRANSPARENT DORAEMON VIDEO -->
-
 <div
     class="hero-character"
     id="heroCharacter">
-
     <video
         class="doraemon-video"
         id="doraemonVideo"
@@ -1118,149 +1440,98 @@ body.dark .secret-gadget{
         loop
         muted
         playsinline>
-
         <source
             src="assets/video/doraemon.webm"
             type="video/webm">
-
     </video>
-
 </div>
-```
-
 </section>
-
-<!-- POCKET -->
-
+<!-- =======================================================
+     POCKET
+======================================================= -->
 <section
     class="pocket-section"
     id="pocket">
-
-```
 <div class="section-heading">
-
     <h2>
         🎒 Doraemon's 4D Pocket
     </h2>
-
     <p>
         One pocket. Infinite possibilities.
     </p>
-
 </div>
-
-
 <div class="pocket-container">
-
-
     <div
         class="pocket-image-container"
         onclick="pullGadget()"
         title="Click the pocket to get a gadget!">
-
         <img
             class="pocket-image"
             src="assets/images/doraemon-pocket.png"
             alt="Doraemon 4D Pocket"
-
             onerror="
                 this.style.display='none';
                 document.getElementById('pocketFallback').style.display='block';
             ">
-
         <div
             id="pocketFallback"
             class="pocket-fallback">
-
             🎒
-
         </div>
-
     </div>
-
-
     <div class="pocket-result">
-
         <div class="pocket-result-image">
-
             <img
                 id="pocketGadgetImage"
                 src=""
                 alt="Gadget from pocket">
-
             <div
                 id="pocketGadgetFallback"
                 class="pocket-result-fallback">
-
                 ✨
-
             </div>
-
         </div>
-
-
         <h3 id="pocketGadgetName">
             Ready?
         </h3>
-
-
         <p id="pocketText">
-            👆 <strong>
-            Click the pocket to get a gadget!
+            👆
+            <strong>
+                Click the pocket to get a gadget!
             </strong>
         </p>
-
-
         <button
             class="btn btn-secondary"
             onclick="pullGadget()">
-
             🎒 Get Another Gadget
-
         </button>
-
-
         <div class="pocket-hint">
             Every click gives you a random gadget!
         </div>
-
     </div>
-
 </div>
-```
-
 </section>
-
-<!-- GADGETS -->
-
+<!-- =======================================================
+     GADGETS
+======================================================= -->
 <section id="gadgets">
-
-```
 <div class="section-heading">
-
     <h2>
         ✨ Amazing Gadgets
     </h2>
-
     <p>
         Click any gadget to discover more.
     </p>
-
 </div>
-
-
 <input
     type="text"
     id="gadgetSearch"
     class="gadget-search"
     placeholder="🔎 Search gadgets...">
-
-
 <div
     class="gadgets"
     id="gadgetGrid">
-
-
+    <!-- ANYWHERE DOOR -->
     <div
         class="gadget-card"
         data-name="anywhere door"
@@ -1268,32 +1539,25 @@ body.dark .secret-gadget{
             'Anywhere Door',
             'A magical door that lets you travel to almost any destination.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/anywhere-door.png"
                 alt="Anywhere Door"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 🚪
             </div>
-
         </div>
-
-        <h3>Anywhere Door</h3>
-
+        <h3>
+            Anywhere Door
+        </h3>
         <p>
             Travel almost anywhere instantly.
         </p>
-
     </div>
-
-
-
+    <!-- BAMBOO COPTER -->
     <div
         class="gadget-card"
         data-name="bamboo copter"
@@ -1301,32 +1565,25 @@ body.dark .secret-gadget{
             'Bamboo Copter',
             'A small flying gadget that allows its user to fly through the sky.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/bamboo-copter.png"
                 alt="Bamboo Copter"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 🚁
             </div>
-
         </div>
-
-        <h3>Bamboo Copter</h3>
-
+        <h3>
+            Bamboo Copter
+        </h3>
         <p>
             Fly through the sky with ease.
         </p>
-
     </div>
-
-
-
+    <!-- TIME MACHINE -->
     <div
         class="gadget-card"
         data-name="time machine"
@@ -1334,32 +1591,25 @@ body.dark .secret-gadget{
             'Time Machine',
             'A futuristic machine used to travel through different points in time.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/time-machine.png"
                 alt="Time Machine"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 ⏰
             </div>
-
         </div>
-
-        <h3>Time Machine</h3>
-
+        <h3>
+            Time Machine
+        </h3>
         <p>
             Explore different points in time.
         </p>
-
     </div>
-
-
-
+    <!-- SMALL LIGHT -->
     <div
         class="gadget-card"
         data-name="small light"
@@ -1367,32 +1617,25 @@ body.dark .secret-gadget{
             'Small Light',
             'A gadget that makes objects smaller.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/small-light.png"
                 alt="Small Light"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 🔦
             </div>
-
         </div>
-
-        <h3>Small Light</h3>
-
+        <h3>
+            Small Light
+        </h3>
         <p>
             Make objects smaller.
         </p>
-
     </div>
-
-
-
+    <!-- BIG LIGHT -->
     <div
         class="gadget-card"
         data-name="big light"
@@ -1400,32 +1643,25 @@ body.dark .secret-gadget{
             'Big Light',
             'A gadget that makes objects larger.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/big-light.png"
                 alt="Big Light"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 💡
             </div>
-
         </div>
-
-        <h3>Big Light</h3>
-
+        <h3>
+            Big Light
+        </h3>
         <p>
             Make objects bigger.
         </p>
-
     </div>
-
-
-
+    <!-- ANYWHERE TV -->
     <div
         class="gadget-card"
         data-name="anywhere tv"
@@ -1433,34 +1669,25 @@ body.dark .secret-gadget{
             'Anywhere TV',
             'A fictional gadget that lets you watch distant places and events.'
         )">
-
         <div class="gadget-image">
-
             <img
                 src="assets/images/anywhere-tv.png"
                 alt="Anywhere TV"
                 onerror="
                     this.parentElement.classList.add('image-missing');
                 ">
-
             <div class="gadget-placeholder">
                 📺
             </div>
-
         </div>
-
-        <h3>Anywhere TV</h3>
-
+        <h3>
+            Anywhere TV
+        </h3>
         <p>
             Watch places from far away.
         </p>
-
     </div>
-
-
-
-    <!-- SECRET GADGET IS HIDDEN INITIALLY -->
-
+    <!-- SECRET GADGET -->
     <div
         class="gadget-card secret-gadget"
         id="secretGadget"
@@ -1469,91 +1696,57 @@ body.dark .secret-gadget{
             '📱 What-If Phone',
             'A mysterious gadget that creates an alternate version of reality based on a question. You found the secret!'
         )">
-
         <div class="gadget-image">
-
             <div style="font-size:75px;">
                 📱
             </div>
-
         </div>
-
         <h3>
             🔓 What-If Phone
         </h3>
-
         <p>
             SECRET GADGET — You unlocked it!
         </p>
-
     </div>
-
 </div>
-```
-
 </section>
-
-<!-- ANYWHERE DOOR -->
-
+<!-- =======================================================
+     ANYWHERE DOOR
+======================================================= -->
 <section
     class="door-section"
     id="door">
-
-```
 <div class="section-heading">
-
     <h2>
         🚪 Anywhere Door
     </h2>
-
     <p>
         Select a place, then open the door!
     </p>
-
 </div>
-
-
 <div class="door-area">
-
-
-    <!-- IMAGE ONLY APPEARS AFTER DOOR OPENS -->
-
+    <!-- DESTINATION IMAGE APPEARS AFTER OPENING -->
     <div
         class="destination-scene"
         id="destinationScene">
-
         <img
             id="destinationImage"
             src=""
             alt="Selected destination">
-
     </div>
-
-
     <div class="door-wrapper">
-
-
         <div
             class="door"
             id="anywhereDoor"
             onclick="toggleDoor()">
-
             <div class="door-knob"></div>
-
         </div>
-
-
         <div
             class="door-message"
             id="doorMessage">
-
             👆 Select a place, then open the door!
-
         </div>
-
-
         <div class="destination-buttons">
-
             <button
                 onclick="chooseDestination(
                     'Tokyo',
@@ -1562,8 +1755,6 @@ body.dark .secret-gadget{
                 )">
                 🗼 Tokyo
             </button>
-
-
             <button
                 onclick="chooseDestination(
                     'Moon',
@@ -1572,8 +1763,6 @@ body.dark .secret-gadget{
                 )">
                 🌙 Moon
             </button>
-
-
             <button
                 onclick="chooseDestination(
                     'Future',
@@ -1582,8 +1771,6 @@ body.dark .secret-gadget{
                 )">
                 🚀 Future
             </button>
-
-
             <button
                 onclick="chooseDestination(
                     'Home',
@@ -1592,1155 +1779,825 @@ body.dark .secret-gadget{
                 )">
                 🏠 Home
             </button>
-
         </div>
-
     </div>
-
 </div>
-```
-
 </section>
-
-<!-- QUIZ -->
-
+<!-- =======================================================
+     QUIZ
+======================================================= -->
 <section id="quiz">
-
-```
 <div class="section-heading">
-
     <h2>
         🎮 Doraemon Quiz
     </h2>
-
     <p>
         How well do you know Doraemon?
     </p>
-
 </div>
-
-
 <div class="quiz-box">
-
     <div
         class="quiz-question"
         id="quizQuestion">
     </div>
-
-
     <div
         class="quiz-options"
         id="quizOptions">
     </div>
-
-
     <div
         class="quiz-result"
         id="quizResult">
     </div>
-
-
     <div
         class="score"
         id="score">
-
         Score: 0
-
     </div>
-
 </div>
-```
-
 </section>
-
-<!-- SECRET SECTION -->
-
+<!-- =======================================================
+     SECRET
+======================================================= -->
 <section class="secret">
-
-```
 <h2>
     🕵️ There might be a secret...
 </h2>
-
 <p>
     Not everything on this website is meant to be obvious. 👀
 </p>
-
 <button
     onclick="secretHint()">
-
     🔮 Give Me A Hint
-
 </button>
-```
-
 </section>
-
-<!-- MODAL -->
-
+<!-- =======================================================
+     MODAL
+======================================================= -->
 <div
     class="modal"
     id="modal"
     onclick="closeOutside(event)">
-
-```
 <div class="modal-box">
-
     <button
         class="close-modal"
         onclick="closeModal()">
-
         ×
-
     </button>
-
-
     <h3 id="modalTitle">
         Gadget
     </h3>
-
-
     <p id="modalText">
         Description
     </p>
-
 </div>
-```
-
 </div>
-
-<!-- FOOTER -->
-
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 <footer>
-
-```
 <p>
     Made with 💙 for Doraemon fans
 </p>
-
 <br>
-
 <p>
-    <strong>Doraemon World</strong>
-    • V7
+    <strong>
+        Doraemon World
+    </strong>
+    • V8
 </p>
-```
-
 </footer>
-
 <script>
-
 /* =========================================================
    SMOOTH SCROLL
 ========================================================= */
-
 function scrollToSection(id){
-
     document
-    .getElementById(id)
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
+        .getElementById(id)
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 }
-
-
 /* =========================================================
    DORAEMON VIDEO MOUSE MOVEMENT
+   Disabled on touch devices automatically
 ========================================================= */
-
 const doraemon =
-document.getElementById("doraemonVideo");
-
+    document.getElementById(
+        "doraemonVideo"
+    );
 const heroCharacter =
-document.getElementById("heroCharacter");
-
-document.addEventListener(
-    "mousemove",
-    function(event){
-
-        const rect =
-        heroCharacter.getBoundingClientRect();
-
-        const x =
-        event.clientX -
-        (rect.left + rect.width / 2);
-
-        const y =
-        event.clientY -
-        (rect.top + rect.height / 2);
-
-        const moveX =
-        Math.max(
-            -20,
-            Math.min(20,x / 25)
-        );
-
-        const moveY =
-        Math.max(
-            -15,
-            Math.min(15,y / 25)
-        );
-
-        doraemon.style.transform =
-
-        `translate(
-            ${moveX}px,
-            ${moveY}px
-        )
-        rotateY(
-            ${moveX / 4}deg
-        )
-        rotateX(
-            ${-moveY / 5}deg
-        )`;
-
-    }
-);
-
-
+    document.getElementById(
+        "heroCharacter"
+    );
+if(
+    window.matchMedia(
+        "(hover: hover)"
+    ).matches
+){
+    document.addEventListener(
+        "mousemove",
+        function(event){
+            const rect =
+                heroCharacter.getBoundingClientRect();
+            const x =
+                event.clientX -
+                (
+                    rect.left +
+                    rect.width / 2
+                );
+            const y =
+                event.clientY -
+                (
+                    rect.top +
+                    rect.height / 2
+                );
+            const moveX =
+                Math.max(
+                    -20,
+                    Math.min(
+                        20,
+                        x / 25
+                    )
+                );
+            const moveY =
+                Math.max(
+                    -15,
+                    Math.min(
+                        15,
+                        y / 25
+                    )
+                );
+            doraemon.style.transform =
+                `translate(
+                    ${moveX}px,
+                    ${moveY}px
+                )
+                rotateY(
+                    ${moveX / 4}deg
+                )
+                rotateX(
+                    ${-moveY / 5}deg
+                )`;
+        }
+    );
+}
 /* =========================================================
    POCKET GADGET DATABASE
 ========================================================= */
-
 const pocketGadgets = [
-
     {
         name:"Anywhere Door",
-        image:"assets/images/anywhere-door.png",
+        image:
+            "assets/images/anywhere-door.png",
         description:
-        "A magical door that can take you to almost any destination."
+            "A magical door that can take you to almost any destination."
     },
-
     {
         name:"Bamboo Copter",
-        image:"assets/images/bamboo-copter.png",
+        image:
+            "assets/images/bamboo-copter.png",
         description:
-        "A flying gadget that lets you travel through the sky."
+            "A flying gadget that lets you travel through the sky."
     },
-
     {
         name:"Time Machine",
-        image:"assets/images/time-machine.png",
+        image:
+            "assets/images/time-machine.png",
         description:
-        "A futuristic machine used to travel through time."
+            "A futuristic machine used to travel through time."
     },
-
     {
         name:"Small Light",
-        image:"assets/images/small-light.png",
+        image:
+            "assets/images/small-light.png",
         description:
-        "A gadget that makes objects smaller."
+            "A gadget that makes objects smaller."
     },
-
     {
         name:"Big Light",
-        image:"assets/images/big-light.png",
+        image:
+            "assets/images/big-light.png",
         description:
-        "A gadget that makes objects bigger."
+            "A gadget that makes objects bigger."
     },
-
     {
         name:"Anywhere TV",
-        image:"assets/images/anywhere-tv.png",
+        image:
+            "assets/images/anywhere-tv.png",
         description:
-        "A fictional gadget for viewing distant places."
+            "A fictional gadget for viewing distant places."
     }
-
 ];
-
-
 /* =========================================================
    POCKET FUNCTION
 ========================================================= */
-
 function pullGadget(){
-
     const randomIndex =
-    Math.floor(
-        Math.random() *
-        pocketGadgets.length
-    );
-
+        Math.floor(
+            Math.random() *
+            pocketGadgets.length
+        );
     const gadget =
-    pocketGadgets[randomIndex];
-
-
+        pocketGadgets[randomIndex];
     const image =
-    document.getElementById(
-        "pocketGadgetImage"
-    );
-
+        document.getElementById(
+            "pocketGadgetImage"
+        );
     const fallback =
-    document.getElementById(
-        "pocketGadgetFallback"
-    );
-
+        document.getElementById(
+            "pocketGadgetFallback"
+        );
     const name =
-    document.getElementById(
-        "pocketGadgetName"
-    );
-
+        document.getElementById(
+            "pocketGadgetName"
+        );
     const text =
-    document.getElementById(
-        "pocketText"
-    );
-
-
+        document.getElementById(
+            "pocketText"
+        );
     name.textContent =
-    "🎉 " + gadget.name;
-
+        "🎉 " + gadget.name;
     text.textContent =
-    gadget.description;
-
-
+        gadget.description;
     image.style.display =
-    "none";
-
+        "none";
     fallback.style.display =
-    "block";
-
-
+        "block";
     image.onload =
-    function(){
-
-        image.style.display =
-        "block";
-
-        fallback.style.display =
-        "none";
-
-    };
-
-
+        function(){
+            image.style.display =
+                "block";
+            fallback.style.display =
+                "none";
+        };
     image.onerror =
-    function(){
-
-        image.style.display =
-        "none";
-
-        fallback.style.display =
-        "block";
-
-    };
-
-
+        function(){
+            image.style.display =
+                "none";
+            fallback.style.display =
+                "block";
+        };
     image.src =
-    gadget.image;
-
-
+        gadget.image;
     const result =
-    document.querySelector(
-        ".pocket-result"
-    );
-
+        document.querySelector(
+            ".pocket-result"
+        );
     result.style.transform =
-    "scale(.96)";
-
+        "scale(.96)";
     setTimeout(
         () => {
-
             result.style.transform =
-            "scale(1)";
-
+                "scale(1)";
         },
         100
     );
-
 }
-
-
 /* =========================================================
    GADGET MODAL
 ========================================================= */
-
 function showGadget(
     name,
     description
 ){
-
     document.getElementById(
         "modalTitle"
     ).textContent =
-    name;
-
+        name;
     document.getElementById(
         "modalText"
     ).textContent =
-    description;
-
+        description;
     document.getElementById(
         "modal"
     ).classList.add(
         "active"
     );
-
 }
-
-
 function closeModal(){
-
     document
-    .getElementById("modal")
-    .classList.remove(
-        "active"
-    );
-
+        .getElementById("modal")
+        .classList.remove(
+            "active"
+        );
 }
-
-
 function closeOutside(event){
-
     if(
-        event.target.id === "modal"
+        event.target.id ===
+        "modal"
     ){
-
         closeModal();
-
     }
-
 }
-
-
 document.addEventListener(
     "keydown",
     function(event){
-
         if(
-            event.key === "Escape"
+            event.key ===
+            "Escape"
         ){
-
             closeModal();
-
         }
-
     }
 );
-
-
 /* =========================================================
    GADGET SEARCH
 ========================================================= */
-
 document
-.getElementById("gadgetSearch")
-.addEventListener(
-    "input",
-    function(){
-
-        const search =
-        this.value.toLowerCase();
-
-        const cards =
-        document.querySelectorAll(
-            ".gadget-card"
-        );
-
-
-        cards.forEach(
-            card => {
-
-                if(
-                    card.classList.contains(
-                        "secret-gadget"
-                    )
-                    &&
-                    !card.classList.contains(
-                        "unlocked"
-                    )
-                ){
-
-                    return;
-
+    .getElementById("gadgetSearch")
+    .addEventListener(
+        "input",
+        function(){
+            const search =
+                this.value.toLowerCase();
+            const cards =
+                document.querySelectorAll(
+                    ".gadget-card"
+                );
+            cards.forEach(
+                card => {
+                    if(
+                        card.classList.contains(
+                            "secret-gadget"
+                        )
+                        &&
+                        !card.classList.contains(
+                            "unlocked"
+                        )
+                    ){
+                        return;
+                    }
+                    const name =
+                        card.dataset.name;
+                    card.style.display =
+                        name.includes(search)
+                        ? ""
+                        : "none";
                 }
-
-
-                const name =
-                card.dataset.name;
-
-
-                card.style.display =
-                name.includes(search)
-                ? "block"
-                : "none";
-
-            }
-        );
-
-    }
-);
-
-
+            );
+        }
+    );
 /* =========================================================
    ANYWHERE DOOR
 ========================================================= */
-
-let selectedDestination = null;
-
-let selectedImage = null;
-
-let selectedButton = null;
-
-let doorOpen = false;
-
-
+let selectedDestination =
+    null;
+let selectedImage =
+    null;
+let selectedButton =
+    null;
+let doorOpen =
+    false;
 function chooseDestination(
     place,
     image,
     button
 ){
-
     selectedDestination =
-    place;
-
+        place;
     selectedImage =
-    image;
-
-
+        image;
     if(selectedButton){
-
         selectedButton.classList.remove(
             "selected"
         );
-
     }
-
-
     selectedButton =
-    button;
-
-
+        button;
     selectedButton.classList.add(
         "selected"
     );
-
-
     const door =
-    document.getElementById(
-        "anywhereDoor"
-    );
-
-
+        document.getElementById(
+            "anywhereDoor"
+        );
     door.classList.remove(
         "open"
     );
-
-
-    doorOpen = false;
-
-
+    doorOpen =
+        false;
     document
-    .getElementById(
-        "destinationScene"
-    )
-    .classList.remove(
-        "show"
-    );
-
-
+        .getElementById(
+            "destinationScene"
+        )
+        .classList.remove(
+            "show"
+        );
     document.getElementById(
         "doorMessage"
     ).textContent =
-
-    "✨ " +
-    place +
-    " selected! Now open the door!";
-
+        "✨ " +
+        place +
+        " selected! Now open the door!";
 }
-
-
 /* =========================================================
    OPEN / CLOSE ANYWHERE DOOR
 ========================================================= */
-
 function toggleDoor(){
-
     const door =
-    document.getElementById(
-        "anywhereDoor"
-    );
-
+        document.getElementById(
+            "anywhereDoor"
+        );
     const message =
-    document.getElementById(
-        "doorMessage"
-    );
-
+        document.getElementById(
+            "doorMessage"
+        );
     const scene =
-    document.getElementById(
-        "destinationScene"
-    );
-
+        document.getElementById(
+            "destinationScene"
+        );
     const imageElement =
-    document.getElementById(
-        "destinationImage"
-    );
-
-
+        document.getElementById(
+            "destinationImage"
+        );
     if(
         !selectedDestination
     ){
-
         message.textContent =
-        "⚠️ Select a place first!";
-
+            "⚠️ Select a place first!";
         return;
-
     }
-
-
     if(!doorOpen){
-
-        doorOpen = true;
-
+        doorOpen =
+            true;
         door.classList.add(
             "open"
         );
-
-
         imageElement.src =
-        selectedImage;
-
+            selectedImage;
         imageElement.alt =
-        selectedDestination;
-
-
+            selectedDestination;
         imageElement.onload =
-        function(){
-
-            scene.classList.add(
-                "show"
-            );
-
-        };
-
-
+            function(){
+                scene.classList.add(
+                    "show"
+                );
+            };
         imageElement.onerror =
-        function(){
-
-            scene.classList.add(
-                "show"
-            );
-
-        };
-
-
+            function(){
+                scene.classList.add(
+                    "show"
+                );
+            };
         message.textContent =
-        "🚪 Welcome to " +
-        selectedDestination +
-        "!";
-
+            "🚪 Welcome to " +
+            selectedDestination +
+            "!";
     }
-
     else{
-
-        doorOpen = false;
-
+        doorOpen =
+            false;
         door.classList.remove(
             "open"
         );
-
         scene.classList.remove(
             "show"
         );
-
-
         message.textContent =
-        "🚪 Door closed. Select another place or open again!";
-
+            "🚪 Door closed. Select another place or open again!";
     }
-
 }
-
-
 /* =========================================================
    QUIZ
 ========================================================= */
-
 const questions = [
-
     {
         question:
-        "What is Doraemon's favorite food?",
-
+            "What is Doraemon's favorite food?",
         options:[
             "Pizza",
             "Dorayaki",
             "Burger",
             "Ramen"
         ],
-
-        answer:"Dorayaki"
+        answer:
+            "Dorayaki"
     },
-
     {
         question:
-        "Where does Doraemon keep his gadgets?",
-
+            "Where does Doraemon keep his gadgets?",
         options:[
             "Backpack",
             "4D Pocket",
             "Drawer",
             "Closet"
         ],
-
-        answer:"4D Pocket"
+        answer:
+            "4D Pocket"
     },
-
     {
         question:
-        "Who is Doraemon's main human friend?",
-
+            "Who is Doraemon's main human friend?",
         options:[
             "Suneo",
             "Gian",
             "Nobita",
             "Dekisugi"
         ],
-
-        answer:"Nobita"
+        answer:
+            "Nobita"
     },
-
     {
         question:
-        "Which gadget allows flying?",
-
+            "Which gadget allows flying?",
         options:[
             "Bamboo Copter",
             "Small Light",
             "Anywhere TV",
             "Time Machine"
         ],
-
-        answer:"Bamboo Copter"
+        answer:
+            "Bamboo Copter"
     }
-
 ];
-
-
-let currentQuestion = 0;
-
-let scoreValue = 0;
-
+let currentQuestion =
+    0;
+let scoreValue =
+    0;
 let highScore =
-Number(
-    localStorage.getItem(
-        "doraemonHighScore"
-    ) || 0
-);
-
-
+    Number(
+        localStorage.getItem(
+            "doraemonHighScore"
+        ) || 0
+    );
 function loadQuestion(){
-
     const question =
-    questions[currentQuestion];
-
-
+        questions[
+            currentQuestion
+        ];
     document.getElementById(
         "quizQuestion"
     ).textContent =
-    question.question;
-
-
+        question.question;
     const options =
-    document.getElementById(
-        "quizOptions"
-    );
-
-
-    options.innerHTML = "";
-
-
+        document.getElementById(
+            "quizOptions"
+        );
+    options.innerHTML =
+        "";
     question.options.forEach(
         option => {
-
             const button =
-            document.createElement(
-                "button"
-            );
-
+                document.createElement(
+                    "button"
+                );
             button.className =
-            "quiz-option";
-
+                "quiz-option";
             button.textContent =
-            option;
-
+                option;
             button.onclick =
-            () =>
-            checkAnswer(option);
-
+                () =>
+                checkAnswer(
+                    option
+                );
             options.appendChild(
                 button
             );
-
         }
     );
-
-
     document.getElementById(
         "quizResult"
-    ).textContent = "";
-
+    ).textContent =
+        "";
 }
-
-
-function checkAnswer(selected){
-
+function checkAnswer(
+    selected
+){
     const question =
-    questions[currentQuestion];
-
-
+        questions[
+            currentQuestion
+        ];
     const result =
-    document.getElementById(
-        "quizResult"
-    );
-
-
+        document.getElementById(
+            "quizResult"
+        );
     if(
         selected ===
         question.answer
     ){
-
         scoreValue++;
-
         result.textContent =
-        "🎉 Correct!";
-
+            "🎉 Correct!";
     }
-
     else{
-
         result.textContent =
-        "😅 Not quite! Answer: " +
-        question.answer;
-
+            "😅 Not quite! Answer: " +
+            question.answer;
     }
-
-
     document.getElementById(
         "score"
     ).textContent =
-    "Score: " + scoreValue;
-
-
+        "Score: " +
+        scoreValue;
     setTimeout(
         () => {
-
             currentQuestion++;
-
-
             if(
                 currentQuestion >=
                 questions.length
             ){
-
                 finishQuiz();
-
             }
-
             else{
-
                 loadQuestion();
-
             }
-
         },
-
         1200
     );
-
 }
-
-
 function finishQuiz(){
-
     if(
         scoreValue >
         highScore
     ){
-
         highScore =
-        scoreValue;
-
+            scoreValue;
         localStorage.setItem(
             "doraemonHighScore",
             highScore
         );
-
     }
-
-
     document.getElementById(
         "quizQuestion"
     ).textContent =
-    "🎊 Quiz Complete!";
-
-
+        "🎊 Quiz Complete!";
     document.getElementById(
         "quizOptions"
-    ).innerHTML = "";
-
-
+    ).innerHTML =
+        "";
     document.getElementById(
         "quizResult"
     ).innerHTML =
-
-    "Your score: <strong>" +
-    scoreValue +
-    "/" +
-    questions.length +
-    "</strong><br><br>" +
-    "🏆 High Score: " +
-    highScore;
-
-
+        "Your score: <strong>" +
+        scoreValue +
+        "/" +
+        questions.length +
+        "</strong><br><br>" +
+        "🏆 High Score: " +
+        highScore;
     const restart =
-    document.createElement(
-        "button"
-    );
-
-
+        document.createElement(
+            "button"
+        );
     restart.className =
-    "btn btn-primary";
-
+        "btn btn-primary";
     restart.textContent =
-    "🔄 Play Again";
-
+        "🔄 Play Again";
     restart.style.marginTop =
-    "20px";
-
+        "20px";
     restart.onclick =
-    restartQuiz;
-
-
+        restartQuiz;
     document.getElementById(
         "quizOptions"
     ).appendChild(
         restart
     );
-
 }
-
-
 function restartQuiz(){
-
-    currentQuestion = 0;
-
-    scoreValue = 0;
-
-
+    currentQuestion =
+        0;
+    scoreValue =
+        0;
     document.getElementById(
         "score"
     ).textContent =
-    "Score: 0";
-
-
+        "Score: 0";
     loadQuestion();
-
 }
-
-
 /* =========================================================
    SECRET LOGO SYSTEM
 ========================================================= */
-
-let bellClicks = 0;
-
-let lastBellClick = 0;
-
-
+let bellClicks =
+    0;
+let lastBellClick =
+    0;
 function bellClick(){
-
     const now =
-    Date.now();
-
-
+        Date.now();
     if(
         now -
         lastBellClick >
         2500
     ){
-
-        bellClicks = 0;
-
+        bellClicks =
+            0;
     }
-
-
     lastBellClick =
-    now;
-
-
+        now;
     bellClicks++;
-
-
     const bell =
-    document.getElementById(
-        "secretBell"
-    );
-
-
+        document.getElementById(
+            "secretBell"
+        );
     bell.style.transform =
-    "scale(1.18)";
-
-
+        "scale(1.18)";
     setTimeout(
         () => {
-
             bell.style.transform =
-            "";
-
+                "";
         },
-
         120
     );
-
-
     if(
         bellClicks >= 5
     ){
-
         unlockSecret();
-
-        bellClicks = 0;
-
+        bellClicks =
+            0;
     }
-
 }
-
-
 /* =========================================================
    UNLOCK SECRET
+   IMPORTANT:
+   No localStorage here.
+   Secret stays hidden after refresh.
 ========================================================= */
-
 function unlockSecret(){
-
     const secret =
-    document.getElementById(
-        "secretGadget"
-    );
-
-
+        document.getElementById(
+            "secretGadget"
+        );
     secret.classList.add(
         "unlocked"
     );
-
-
     const notification =
-    document.getElementById(
-        "unlockMessage"
-    );
-
-
+        document.getElementById(
+            "unlockMessage"
+        );
     notification.classList.add(
         "show"
     );
-
-
     setTimeout(
         () => {
-
             notification.classList.remove(
                 "show"
             );
-
         },
-
         3000
     );
-
-
     setTimeout(
         () => {
-
             document
-            .getElementById(
-                "gadgets"
-            )
-            .scrollIntoView({
-                behavior:"smooth"
-            });
-
+                .getElementById(
+                    "gadgets"
+                )
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
         },
-
         600
     );
-
 }
-
-
 /* =========================================================
    SECRET HINT
 ========================================================= */
-
 function secretHint(){
-
     showGadget(
-
         "👀 Secret Hint",
-
         "Look around the top-left corner of the website... something there might be more important than it looks."
-
     );
-
 }
-
-
 /* =========================================================
    DARK MODE
 ========================================================= */
-
 function toggleTheme(){
-
     document.body
-    .classList
-    .toggle("dark");
-
-
+        .classList
+        .toggle("dark");
     const dark =
-    document.body
-    .classList
-    .contains("dark");
-
-
+        document.body
+            .classList
+            .contains("dark");
     document.getElementById(
         "themeButton"
     ).textContent =
-    dark ? "☀️" : "🌙";
-
-
+        dark
+        ? "☀️"
+        : "🌙";
     localStorage.setItem(
         "doraemonTheme",
-        dark ? "dark" : "light"
+        dark
+        ? "dark"
+        : "light"
     );
-
 }
-
-
 if(
     localStorage.getItem(
         "doraemonTheme"
     ) === "dark"
 ){
-
     document.body
-    .classList
-    .add("dark");
-
-
+        .classList
+        .add("dark");
     document.getElementById(
         "themeButton"
     ).textContent =
-    "☀️";
-
+        "☀️";
 }
-
-
 /* =========================================================
    START QUIZ
 ========================================================= */
-
 loadQuestion();
-
 </script>
-
 </body>
 </html>
